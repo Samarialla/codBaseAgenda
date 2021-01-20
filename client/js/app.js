@@ -45,7 +45,7 @@ class EventsManager {
         	},
         	defaultDate: moment().format("YYYY-MM-DD"),
         	navLinks: true,
-        	editable: false,
+        	editable: true,
         	eventLimit: true,
           droppable: true,
           dragRevertDuration: 0,
