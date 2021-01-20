@@ -1,5 +1,8 @@
 
-
+$('.timepicker').on('click', function(e) {
+  e.preventDefault();
+  $(this).attr("autocomplete", "off");  
+});
 
 class EventsManager {
     constructor() {
@@ -17,7 +20,7 @@ class EventsManager {
           contentType: false,
           type: 'GET',
           success: (data) =>{
-            console.log(data);
+            //console.log(data);
             if (data.msg=="OK") {
               this.poblarCalendario(data.eventos)
             }else {
@@ -26,28 +29,31 @@ class EventsManager {
             }
           },
           error: function(){
-            alert("error en la comunicación con el servidor1");
+            alert("error en la comunicación con el servidor");
           }
         })
 
     }
 
     poblarCalendario(eventos) {
+   //console.log(eventos)
         $('.calendario').fullCalendar({
             header: {
         		left: 'prev,next today',
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2019-07-01',
+        	defaultDate: moment().format("YYYY-MM-DD"),
         	navLinks: true,
-        	editable: true,
+        	editable: false,
         	eventLimit: true,
           droppable: true,
           dragRevertDuration: 0,
           timeFormat: 'H:mm',
-          eventDrop: (event) => {
-              this.actualizarEvento(event)
+          locale: 'es',
+          eventDrop: (eventos) => {
+           // console.log(eventos);
+              this.actualizarEvento(eventos)
           },
           events: eventos,
           eventDragStart: (event,jsEvent) => {
@@ -150,6 +156,7 @@ class EventsManager {
     }
 
     actualizarEvento(evento) {
+     // console.log(evento)
         let id = evento.id,
             start = moment(evento.start).format('YYYY-MM-DD HH:mm:ss'),
             end = moment(evento.end).format('YYYY-MM-DD HH:mm:ss'),
@@ -161,6 +168,7 @@ class EventsManager {
 
         start_date = start.substr(0,10)
         end_date = end.substr(0,10)
+      
         start_hour = start.substr(11,8)
         end_hour = end.substr(11,8)
 

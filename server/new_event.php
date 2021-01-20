@@ -18,8 +18,8 @@ if ($con->initConexion()=='OK'){
     $datos['horaf'] = "'".$start_hour."'";
     $datos['allDay'] = "'".$allDay."'";
     if ($con->insertData('eventos', $datos)) {
-      echo json_encode($datos);
-      	$php_response=array("msg"=>"OK","data"=>"2");
+      //echo json_encode($datos);
+      	$php_response=array("msg"=>"OK","data"=>$datos);
     }else{
     	$php_response=array("msg"=>"Error la registrar los datos","data"=>"2");
     }
@@ -28,5 +28,3 @@ if ($con->initConexion()=='OK'){
 }else {
     echo "Se presentó un error en la conexión";
 }
-
-?>
