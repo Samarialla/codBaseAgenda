@@ -2,11 +2,11 @@
 
   class ConectorBD
   {
-    private $host = 'localhost';
-    private $user = 'root';
-    private $password = '';
+    private $host = 'z5zm8hebixwywy9d.cbetxkdyhwsb.us-east-1.rds.amazonaws.com';
+    private $user = 'hnudiq47e4lxk3jt';
+    private $password = 'i7vznk4ng3aljldr';
     private $conexion;
-    private $nombre_db='agenda';
+    private $nombre_db='pvvjgrurrf0lv4ju';
 
     function initConexion(){
       $this->conexion = new mysqli($this->host, $this->user, $this->password,$this->nombre_db);
