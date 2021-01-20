@@ -1,6 +1,7 @@
-$(function(){
+$(function () {
   var l = new Login();
 })
+
 
 
 class Login {
@@ -8,14 +9,14 @@ class Login {
     this.submitEvent()
   }
 
-  submitEvent(){
-    $('form').submit((event)=>{
+  submitEvent() {
+    $('form').submit((event) => {
       event.preventDefault()
       this.sendForm()
     })
   }
 
-  sendForm(){
+  sendForm() {
     let form_data = new FormData();
     form_data.append('username', $('#user').val())
     form_data.append('password', $('#password').val())
@@ -27,17 +28,21 @@ class Login {
       contentType: false,
       data: form_data,
       type: 'POST',
-      success: function(php_response){
+      success: function (php_response) {
         console.log(php_response);
         if (php_response.msg == "OK") {
           window.location.href = 'main.html';
-        }else {
+        } else {
           alert(php_response.msg);
         }
       },
-      error: function(){
+      error: function () {
         alert("error en la comunicación con el servidor1");
       }
     })
-  }
+  } 
+
+  
+
+ 
 }

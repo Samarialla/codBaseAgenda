@@ -1,9 +1,19 @@
 
-$('.timepicker').on('click', function(e) {
+$('#logout').on('click', function(e) {
   e.preventDefault();
-  $(this).attr("autocomplete", "off");  
+  $.ajax({
+    url: '../server/logout.php',
+    success: function (php_response) {
+     // console.log(php_response);
+     
+        window.location.href = 'index.html';
+     
+    },
+    error: function () {
+      alert("error en la comunicación con el servidor");
+    }
+  })
 });
-
 class EventsManager {
     constructor() {
         this.obtenerDataInicial()
